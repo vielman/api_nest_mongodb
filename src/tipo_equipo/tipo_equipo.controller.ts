@@ -15,7 +15,7 @@ export class TipoEquipoController {
   constructor(private readonly tipoEquipoService: TipoEquipoService) {}
 
   @Get()
-  async findAll(): Promise<TipoEquipo[]> {
+  async findAll() {
     return await this.tipoEquipoService.findAll();
   }
 
