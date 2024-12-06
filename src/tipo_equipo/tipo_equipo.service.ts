@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { TipoEquipo } from './schemas/tipo_euipo.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { PaginationQueryDto } from './schemas/pagination-query.dto';
 
 @Injectable()
 export class TipoEquipoService {
@@ -10,8 +9,8 @@ export class TipoEquipoService {
     @InjectModel(TipoEquipo.name) private tipoEquipotModel: Model<TipoEquipo>,
   ) {}
 
-  async findAll({ limit, offset }: PaginationQueryDto): Promise<TipoEquipo[]> {
-    return await this.tipoEquipotModel.find().skip(offset).limit(limit).exec();
+  async findAll(): Promise<TipoEquipo[]> {
+    return await this.tipoEquipotModel.find().exec();
   }
 
   async findOne(id: string): Promise<TipoEquipo> {
@@ -22,7 +21,6 @@ export class TipoEquipoService {
     const newPost = new this.tipoEquipotModel(tipoEquipo);
     return await newPost.save();
   }
-
   async update(id: string, tipoEquipo: TipoEquipo): Promise<TipoEquipo> {
     return await this.tipoEquipotModel.findByIdAndUpdate(id, tipoEquipo, {
       new: true,

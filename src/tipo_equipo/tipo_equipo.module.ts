@@ -13,4 +13,4 @@ import { TipoEquipoController } from './tipo_equipo.controller';
   providers: [TipoEquipoService],
   controllers: [TipoEquipoController],
 })
-export class TipoEquipoModule { }
+export class TipoEquipoModule {}

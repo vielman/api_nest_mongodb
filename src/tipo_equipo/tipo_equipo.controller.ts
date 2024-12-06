@@ -6,21 +6,17 @@ import {
   Param,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { TipoEquipoService } from './tipo_equipo.service';
 import { TipoEquipo } from './schemas/tipo_euipo.schema';
-import { PaginationQueryDto } from './schemas/pagination-query.dto';
 
 @Controller('tipo-equipo')
 export class TipoEquipoController {
   constructor(private readonly tipoEquipoService: TipoEquipoService) {}
 
   @Get()
-  async findAll(
-    @Query() pagination: PaginationQueryDto,
-  ): Promise<TipoEquipo[]> {
-    return await this.tipoEquipoService.findAll(pagination);
+  async findAll(): Promise<TipoEquipo[]> {
+    return await this.tipoEquipoService.findAll();
   }
 
   @Get(':id')
