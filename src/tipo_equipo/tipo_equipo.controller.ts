@@ -19,17 +19,17 @@ export class TipoEquipoController {
     return await this.tipoEquipoService.findAll();
   }
 
-  @Get(':id')
+  @Get('/details/:id')
   async findOne(@Param('id') id: string): Promise<TipoEquipo> {
     return await this.tipoEquipoService.findOne(id);
   }
 
-  @Post()
+  @Post('/create')
   async create(@Body() tipoEquipo: TipoEquipo): Promise<TipoEquipo> {
     return await this.tipoEquipoService.create(tipoEquipo);
   }
 
-  @Put(':id')
+  @Put('/edit/:id')
   async update(
     @Param('id') id: string,
     @Body() tipoEquipo: TipoEquipo,
@@ -37,7 +37,7 @@ export class TipoEquipoController {
     return await this.tipoEquipoService.update(id, tipoEquipo);
   }
 
-  @Delete(':id')
+  @Delete('/delete/:id')
   async delete(@Param('id') id: string): Promise<TipoEquipo> {
     return await this.tipoEquipoService.delete(id);
   }
